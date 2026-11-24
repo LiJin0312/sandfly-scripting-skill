@@ -1,5 +1,6 @@
 name: Release skill zip
 
+# 标签用技能自身版本（如 v1.0.0）；API 版本从 SKILL.md 读取并写进发布标题。
 on:
   push:
     tags:
@@ -24,7 +25,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          API_VERSION=$(grep -oE '脚本 API v[0-9]+' skills/sandfly-scripting/SKILL.md | head -n1 | grep -oE 'v[0-9]+')
+          if [ -z "$API_VERSION" ]; then API_VERSION="unknown"; fi
           gh release create "$GITHUB_REF_NAME" \
             sandfly-scripting.zip \
-            --title "SandFly Scripting Skill $GITHUB_REF_NAME" \
+            --title "SandFly Scripting Skill $GITHUB_REF_NAME (SandFly API $API_VERSION)" \
             --generate-notes
