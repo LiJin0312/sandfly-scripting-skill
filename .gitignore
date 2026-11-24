@@ -1,0 +1,15 @@
+# Generated distributable package; publish it as a GitHub Release asset instead.
+*.zip
+
+# Local WorkBuddy / editor data
+.workbuddy/
+.mimosa/
+.idea/
+.vscode/
+
+# Local build and OS files
+local.properties
+.gradle/
+build/
+.DS_Store
+Thumbs.db
