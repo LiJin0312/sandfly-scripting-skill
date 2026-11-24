@@ -2,7 +2,7 @@
 
 **一句话**：把“为 SandFly 读屏软件编写脚本和宏”的完整能力打包成一个 AI 技能——装进支持技能的 AI 工具后，你用自然语言描述功能，AI 就能产出可直接安装的脚本或宏。
 
-一个 [Agent Skill](https://agentskills.io) 格式的技能包，适配 SandFly 0.7.0 / 脚本 API v6。你只需描述想法（必要时提供应用的控件信息），AI 就会按正确流程产出交付物。
+一个 [Agent Skill](https://agentskills.io) 格式的技能包，当前内容同步至 SandFly 0.7.0 / 脚本 API v6。你只需描述想法（必要时提供应用的控件信息），AI 就会按正确流程产出交付物。
 
 ## 这是什么
 
@@ -35,7 +35,7 @@ sandfly-scripting-skill/            # 本仓库根目录
 │       └── examples/
 │           ├── example-plugin.lua  # 官方入门示例
 │           ├── app-tweaks.lua      # 单应用定制综合示例
-│           ├── wikipedia-search.lua# 官方 onDemand + 网络示例（v6 修正版）
+│           ├── wikipedia-search.lua# 官方 onDemand + 网络示例（适配 v6）
 │           ├── notepad.lua         # 官方窗口小应用示例
 │           └── talking-clock.lua   # 官方熄屏运行 + 定时器示例
 ├── README.md                       # 本文件
@@ -46,7 +46,7 @@ sandfly-scripting-skill/            # 本仓库根目录
 
 仓库已按这个结构发布，导入时工具会自动定位到 `skills/sandfly-scripting/`。
 
-生成的 `sandfly-scripting.zip` 不放在源码仓库里，作为 GitHub Release 附件发布。
+源码仓库只保留可读的源文件；打包好的 `.zip` 会在 Releases 页面提供。
 
 ## 从 GitHub 导入
 
@@ -70,7 +70,7 @@ gh skill preview LiJin0312/sandfly-scripting-skill sandfly-scripting
 gh skill install LiJin0312/sandfly-scripting-skill sandfly-scripting
 ```
 
-如果工具没有命令行导入，就手动下载/克隆仓库，把 `skills/sandfly-scripting/` 这个**子目录**复制到工具的 skills 目录（不要复制仓库根目录）。
+如果工具没有命令行导入，就手动下载或克隆仓库，只把 `skills/sandfly-scripting/` 这个**子目录**复制到工具的 skills 目录，不需要复制仓库根目录。
 
 ## 手动安装
 
@@ -97,16 +97,20 @@ AI 会**先问清需求**（希望什么时候干活、在哪个应用、想听�
 - 手机/平板上的 SandFly 0.7.0 或更新版本（脚本 API v6；手表和电视不支持脚本）
 - 想用按键注入类功能（`sf.keys.*`）需安装 [Shizuku](https://shizuku.rikka.app)
 
-## 维护与更新
+## 版本与更新
 
-SandFly 的脚本 API 随版本演进（本包同步于 2026-11-24，对应 SandFly 0.7.0 / API v6）。仓库更新后，在 `skills/sandfly-scripting/` 下重新复制：
+当前内容同步于 2026-11-24，对应 SandFly 0.7.0 / 脚本 API v6。SandFly 官方更新脚本和宏后，本仓库会跟着更新。
 
-- `docs/scripting.md` → `references/api.md`
-- `docs/reference/item-files.md` → `references/item-files.md`
-- `docs/user-guide/en/16-macros.md` → `references/macros.md`
-- `docs/scripting/examples/*.lua` → `examples/`
+用命令行导入的用户可以检查并更新：
 
-然后按新版本修正 `SKILL.md` 中的版本号、权限与限制。改完可用技能校验工具检查 `skills/sandfly-scripting/` 目录。
+```bash
+npx skills check
+npx skills update
+# 或 GitHub Copilot CLI
+gh skill update sandfly-scripting
+```
+
+手动安装的用户重新下载 `skills/sandfly-scripting/` 并覆盖本地目录即可。Star 或 Watch 本仓库可以及时收到更新通知。
 
 ## 来源与许可
 
