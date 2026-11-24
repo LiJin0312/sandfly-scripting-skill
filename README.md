@@ -44,30 +44,30 @@ sandfly-scripting-skill/            # 本仓库根目录
 └── .gitignore
 ```
 
-上传到 GitHub 时，请把**仓库根目录下的全部内容**（含隐藏的 `.gitignore`）上传到仓库根目录，不要把 `skills` 这一层去掉。
+仓库已按这个结构发布，导入时工具会自动定位到 `skills/sandfly-scripting/`。
 
 生成的 `sandfly-scripting.zip` 不放在源码仓库里，作为 GitHub Release 附件发布。
 
 ## 从 GitHub 导入
 
-把 `YOUR_NAME` 换成你的 GitHub 用户名。很多支持 Agent Skills 的工具可以直接从 GitHub 拉取：
+很多支持 Agent Skills 的工具可以直接从 GitHub 拉取本仓库：
 
 ```bash
 # 通用 skills CLI：发现仓库中的技能并安装到已检测的 AI 工具
-npx skills add YOUR_NAME/sandfly-scripting-skill
+npx skills add LiJin0312/sandfly-scripting-skill
 
 # 只安装这一个技能
-npx skills add YOUR_NAME/sandfly-scripting-skill --skill sandfly-scripting -y
+npx skills add LiJin0312/sandfly-scripting-skill --skill sandfly-scripting -y
 
 # 也可以直接指向技能目录
-npx skills add https://github.com/YOUR_NAME/sandfly-scripting-skill/tree/main/skills/sandfly-scripting
+npx skills add https://github.com/LiJin0312/sandfly-scripting-skill/tree/main/skills/sandfly-scripting
 ```
 
 GitHub Copilot CLI 用户（需要 GitHub CLI 2.90+）：
 
 ```bash
-gh skill preview YOUR_NAME/sandfly-scripting-skill sandfly-scripting
-gh skill install YOUR_NAME/sandfly-scripting-skill sandfly-scripting
+gh skill preview LiJin0312/sandfly-scripting-skill sandfly-scripting
+gh skill install LiJin0312/sandfly-scripting-skill sandfly-scripting
 ```
 
 如果工具没有命令行导入，就手动下载/克隆仓库，把 `skills/sandfly-scripting/` 这个**子目录**复制到工具的 skills 目录（不要复制仓库根目录）。
